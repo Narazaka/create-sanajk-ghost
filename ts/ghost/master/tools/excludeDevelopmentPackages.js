@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const shell = require("shelljs");
+const normalizePath = require("normalize-path");
 
 const ghostMasterPath = __dirname + "/..";
 const ghostRootPath = ghostMasterPath + "/../..";
@@ -23,14 +24,14 @@ const productionPackages =
 const productionPackagesHash = {};
 for (const package of productionPackages) productionPackagesHash[package] = true;
 const developmentPackages = allPackages.filter(package => !productionPackagesHash[package]);
-const normalizedDevelopmentPackages = developmentPackages.map(package => path.relative(ghostRootPath, package));
+const normalizedDevelopmentPackages = developmentPackages.map(package => normalizePath(path.relative(ghostRootPath, package)));
 
 const developerOptionsContent = fs.readFileSync(developerOptionsPath, "utf8");
 const currentPaths =
     developerOptionsContent
     .split(/\r?\n/)
     .filter(line => line.length)
-    .map(line => path.normalize(line.split(",")[0]));
+    .map(line => normalizePath(path.normalize(line.split(",")[0])));
 const currentPathsHash = {};
 for (const currentPath of currentPaths) currentPathsHash[currentPath] = true;
 
