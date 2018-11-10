@@ -1,6 +1,6 @@
 # create-sanajk-ghost
 
-伺かゴースト最初の一歩をSanaJKで
+伺かゴースト最初の一歩を[SanaJK](https://github.com/Narazaka/sanajk)で始めるためのツール
 
 ## インストール
 
