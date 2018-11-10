@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+updates.txt
+updates2.dau
+/js
+/ts-node

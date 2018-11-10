@@ -1,11 +1,54 @@
 {
   "name": "create-sanajk-ghost",
   "version": "1.0.0",
-  "description": "Create SanaJK Ukagaka Ghost!",
-  "main": "index.js",
+  "description": "Create Ukagaka Ghost!",
+  "keywords": [
+    "sanajk",
+    "ghost",
+    "ukagaka",
+    "shiori"
+  ],
+  "bin": {
+    "create-sanajk-ghost": "index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "npm-run-all gen",
+    "prepublishOnly": "npm-run-all test",
+    "delete-modules": "npm-run-all delete-modules:*",
+    "delete-modules:ts": "rimraf ts/ghost/master/node_modules",
+    "delete-modules:ts-node": "rimraf ts-node/ghost/master/node_modules",
+    "delete-modules:js": "rimraf js/ghost/master/node_modules",
+    "gen": "npm-run-all delete-modules gen:*",
+    "gen:ts": "npm-run-all gen:ts:*",
+    "gen:ts:gen": "node genTs.js",
+    "gen:ts-node": "npm-run-all gen:ts-node:*",
+    "gen:ts-node:del": "rimraf ts-node",
+    "gen:ts-node:gen": "node genTsNode.js",
+    "gen:js": "npm-run-all gen:js:*",
+    "gen:js:del": "rimraf js",
+    "gen:js:gen": "node genJs.js",
+    "test": "npm-run-all -p test:*",
+    "test:ts": "node test/ts-test.js",
+    "test:ts-node": "node test/ts-node-test.js",
+    "test:js": "node test/js-test.js"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "debug": "^4.1.0",
+    "fso": "^2.6.3",
+    "jszip": "^3.1.5",
+    "node-fetch": "^2.2.1",
+    "shelljs": "^0.8.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3",
+    "rimraf": "^2.6.2"
   },
   "author": "narazaka",
-  "license": "Zlib"
+  "license": "Zlib",
+  "url": "https://github.com/Narazaka/create-sanajk-ghost",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Narazaka/create-sanajk-ghost.git"
+  }
 }

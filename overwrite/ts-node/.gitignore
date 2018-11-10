@@ -1,0 +1,4 @@
+node_modules
+/ghost/master/save.json
+SHIOLINK.log
+*.nar
