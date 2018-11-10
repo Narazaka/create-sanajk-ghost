@@ -16,4 +16,4 @@ const exec = (cmd) => {
 
 shell.cd("ts-node/ghost/master");
 exec("npm install");
-exec("node_modules\\.bin\\ts-node -P tsconfig.json -e \"import shiori = require('./lib/shiori'); import { exit } from '../../../test/helper/processExit'; console.log(shiori); exit();\"");
+exec("npx ts-node -P tsconfig.json -e \"import shiori = require('./lib/shiori'); import { exit } from '../../../test/helper/processExit'; console.log(shiori); exit();\"");
