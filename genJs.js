@@ -26,6 +26,7 @@ function convertJs(tsFile) {
         .replace(/^import {([^}]+)} from "([^"]+)";/gm, 'const {$1} = require("$2");')
         .replace(/^import \* as (\w+) from "([^"]+)";/gm, 'const $1 = require("$2");')
         .replace(deleteJsFileLineRe, "")
+        .replace(/!\./g, ".")
         .replace(/^export =/gm, 'module.exports =')
         .replace(
             /^export (const|class|function) (\w+)/gm,
