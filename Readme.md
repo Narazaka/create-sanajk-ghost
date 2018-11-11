@@ -8,13 +8,13 @@
 
 伺かゴースト最初の一歩を[SanaJK](https://github.com/Narazaka/sanajk)で始めるためのツール
 
-## インストール
+## Install / インストール
 
 ```bash
 npm install -g create-sanajk-ghost
 ```
 
-## ゴーストを作る
+## Usage / ゴーストを作る
 
 ```bash
 # with TypeScript
@@ -25,13 +25,13 @@ create-sanajk-ghost -t ts-node ./ghost/myghost
 create-sanajk-ghost -t js ./ghost/myghost
 ```
 
-## narを作る
+## make nar / narを作る
 
 ```bash
 cd ./ghost/myghost/ghost/master
 npm run nar
 ```
 
-## ライセンス
+## License / ライセンス
 
-このソフトウェアは[Zlib License](https://narazaka.net/license/Zlib?2018)で提供されています。
+[Zlib License](https://narazaka.net/license/Zlib?2018)
