@@ -37,6 +37,9 @@ async function main(directory, type, force) {
     shell.mkdir("-p", directory);
     info("copying contents to [%s]", directory);
     shell.cp("-R", __dirname + `/${type}/{*,.*}`, directory);
+    const npmIgnorePath = path.join(directory, ".npmignore");
+    const gitIgnorePath = path.join(directory, ".gitignore");
+    if (fs.existsSync(npmIgnorePath)) shell.mv(npmIgnorePath, gitIgnorePath);
     const installTxtPath = path.join(directory, "install.txt");
     info("rewrite [%s]", installTxtPath);
     const installTxtContent = fs.readFileSync(installTxtPath, "utf8").replace(/DIR/, path.basename(directory));
