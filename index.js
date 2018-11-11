@@ -33,10 +33,14 @@ async function main(directory, type, force) {
         error("directory already exists!");
         return;
     }
-    shell.mkdir("-p", directory);
     info("create directory [%s]", directory);
+    shell.mkdir("-p", directory);
     info("copying contents to [%s]", directory);
     shell.cp("-R", __dirname + `/${type}/{*,.*}`, directory);
+    const installTxtPath = path.join(directory, "install.txt");
+    info("rewrite [%s]", installTxtPath);
+    const installTxtContent = fs.readFileSync(installTxtPath, "utf8").replace(/DIR/, path.basename(directory));
+    fs.writeFileSync(installTxtPath, installTxtContent);
     const ghostMasterDirectory = path.join(directory, "ghost/master");
     info("downloading SHIOLINK to [%s]", directory);
     await downloadShiolink(ghostMasterDirectory);

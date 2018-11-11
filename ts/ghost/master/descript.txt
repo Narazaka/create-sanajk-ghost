@@ -1,0 +1,3 @@
+chatset,UTF-8
+type,ghost
+name,NAME
