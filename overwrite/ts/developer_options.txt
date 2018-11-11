@@ -1,3 +1,4 @@
+.git,nonar.noupdate
 ghost/master/src,nonar,noupdate
 ghost/master/tools,nonar,noupdate
 ghost/master/SHIOLINK.log,nonar,noupdate
